@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>الموقع الديني - أذكار</title>
+  <style>
+    body {
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      background: #fef9f0;
+      color: #222;
+      margin: 0; padding: 0;
+    }
+    header {
+      background: #333;
+      color: #fff;
+      text-align: center;
+      padding: 1rem 0;
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+    nav {
+      background: #444;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      padding: 0.5rem;
+    }
+    nav button {
+      background: #f8c146;
+      border: none;
+      padding: 0.6rem 1rem;
+      font-size: 1rem;
+      cursor: pointer;
+      border-radius: 4px;
+      transition: background 0.3s ease;
+    }
+    nav button:hover,
+    nav button.active {
+      background: #d4a31f;
+      color: #fff;
+    }
+    main {
+      max-width: 900px;
+      margin: 20px auto;
+      padding: 0 15px 50px 15px;
+      background: #fff;
+      box-shadow: 0 0 10px #ccc;
+      border-radius: 8px;
+    }
+    h2 {
+      margin-top: 0;
+      color: #d4a31f;
+      border-bottom: 2px solid #d4a31f;
+      padding-bottom: 5px;
+    }
+    .zekr-item {
+      background: #fff7d1;
+      border: 1px solid #f8c146;
+      border-radius: 6px;
+      margin-bottom: 12px;
+      padding: 12px 15px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      box-shadow: 0 2px 5px rgba(212,163,31,0.2);
+    }
+    .zekr-text {
+      font-size: 1.1rem;
+      line-height: 1.4;
+    }
+    .zekr-info {
+      font-size: 0.9rem;
+      color: #555;
+      font-style: italic;
+    }
+    .zekr-count {
+      margin-top: 8px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .zekr-count span {
+      font-weight: bold;
+      font-size: 1.1rem;
+      color: #d47600;
+    }
+    .zekr-count button {
+      background: #d4a31f;
+      border: none;
+      color: #fff;
+      font-weight: bold;
+      cursor: pointer;
+      padding: 6px 12px;
+      border-radius: 4px;
+      transition: background 0.3s ease;
+    }
+    .zekr-count button:hover {
+      background: #a57610;
+    }
+    .hidden {
+      display: none;
+    }
+    footer {
+      text-align: center;
+      color: #777;
+      padding: 15px;
+      font-size: 0.9rem;
+      border-top: 1px solid #ddd;
+      margin-top: 30px;
+    }
+  </style>
+</head>
+<body>
+  <header>الموقع الديني - أذكار</header>
+  <nav id="menu">
+    <button data-section="1" class="active">أذكار الصباح</button>
+    <button data-section="2">أذكار المساء</button>
+    <button data-section="3">أذكار النوم</button>
+    <button data-section="4">أذكار بعد الصلاة</button>
+    <button data-section="5">أذكار الاستيقاظ</button>
+    <button data-section="6">أذكار المسجد</button>
+    <button data-section="7">أذكار الطعام</button>
+    <button data-section="8">أذكار وتحوي</button>
+  </nav>
+  <main id="content">
+
+    <!-- القسم 1: أذكار الصباح -->
+    <section id="section-1" class="section">
+      <h2>أذكار الصباح</h2>
+      <div class="zekr-list"></div>
+    </section>
+
+    <!-- القسم 2: أذكار المساء -->
+    <section id="section-2" class="section hidden">
+      <h2>أذكار المساء</h2>
+      <div class="zekr-list"></div>
+    </section>
+
+    <!-- القسم 3: أذكار النوم -->
+    <section id="section-3" class="section hidden">
+      <h2>أذكار النوم</h2>
+      <div class="zekr-list"></div>
+    </section>
+
+    <!-- القسم 4: أذكار بعد الصلاة -->
+    <section id="section-4" class="section hidden">
+      <h2>أذكار بعد الصلاة</h2>
+      <div class="zekr-list"></div>
+    </section>
+
+    <!-- القسم 5: أذكار الاستيقاظ -->
+    <section id="section-5" class="section hidden">
+      <h2>أذكار الاستيقاظ</h2>
+      <div class="zekr-list"></div>
+    </section>
+
+    <!-- القسم 6: أذكار المسجد -->
+    <section id="section-6" class="section hidden">
+      <h2>أذكار المسجد</h2>
+      <div class="zekr-list"></div>
+    </section>
+
+    <!-- القسم 7: أذكار الطعام -->
+    <section id="section-7" class="section hidden">
+      <h2>أذكار الطعام</h2>
+      <div class="zekr-list"></div>
+    </section>
+
+    <!-- القسم 8: أذكار وتحوي -->
+    <section id="section-8" class="section hidden">
+      <h2>أذكار وتحوي</h2>
+      <div class="zekr-list"></div>
+    </section>
+
+  </main>
+  <footer>جميع الحقوق محفوظة © 2025</footer>
+
+  <script>
+    const data = {
+      1: [ // أذكار الصباح
+        {
+          text: "أصبحنا وأصبح الملك لله والحمد لله لا إله إلا الله وحده لا شريك له، له الملك وله الحمد وهو على كل شيء قدير.",
+          info: "تسبيح الصباح",
+          count: 1
+        },
+        {
+          text: "اللّهُـمَّ ما أصبح بي من نعمة أو بأحد من خلقك فمنك وحدك لا شريك لك، فلك الحمد ولك الشكر.",
+          info: "دعاء الصباح",
+          count: 1
+        },
+        {
+          text: "رضيت بالله ربا، وبالإسلام دينا، وبمحمد صلى الله عليه وسلم نبيا.",
+          info: "تسليم وقبول",
+          count: 3
+        },
+        {
+          text: "اللّهـمَّ عافني في بدني، اللّهـمَّ عافني في سمعي، اللّهـمَّ عافني في بصري...",
+          info: "دعاء عافية الصباح",
+          count: 1
+        }
+      ],
+      2: [ // أذكار المساء
+        {
+          text: "أمسينا وأمسى الملك لله والحمد لله لا إله إلا الله وحده لا شريك له، له الملك وله الحمد وهو على كل شيء قدير.",
+          info: "تسبيح المساء",
+          count: 1
+        },
+        {
+          text: "اللّهُـمَّ ما أمسينا من نعمة أو بأحد من خلقك فمنك وحدك لا شريك لك، فلك الحمد ولك الشكر.",
+          info: "دعاء المساء",
+          count: 1
+        },
+        {
+          text: "أعوذ بكلمات الله التامات من شر ما خلق.",
+          info: "دعاء الحماية",
+          count: 3
+        },
+        {
+          text: "اللّهـمَّ عافني في بدني، اللّهـمَّ عافني في سمعي، اللّهـمَّ عافني في بصري...",
+          info: "دعاء عافية المساء",
+          count: 1
+        }
+      ],
+      3: [ // أذكار النوم
+        {
+          text: "باسمك اللهم أموت وأحيا.",
+          info: "دعاء قبل النوم",
+          count: 3
+        },
+        {
+          text: "اللهم قني عذابك يوم تبعث عبادك.",
+          info: "دعاء النوم",
+          count: 1
+        },
+        {
+          text: "اللهم أنت ربي لا إله إلا أنت خلقتني وأنا عبدك...",
+          info: "سيد الاستغفار",
+          count: 1
+        }
+      ],
+      4: [ // أذكار بعد الصلاة
+        {
+          text: "اللهم أنت السلام ومنك السلام، تباركت يا ذا الجلال والإكرام.",
+          info: "دعاء بعد الصلاة",
+          count: 3
+        },
+        {
+          text: "رضيت بالله ربا وبالإسلام دينا وبمحمد صلى الله عليه وسلم نبيا.",
+          info: "ثلاث مرات",
+          count: 3
+        },
+        {
+          text: "سبحان الله والحمد لله ولا إله إلا الله والله أكبر.",
+          info: "تسبيح بعد الصلاة",
+          count: 33
+        }
+      ],
+      5: [ // أذكار الاستيقاظ
+        {
+          text: "الحمد لله الذي أحيانا بعد ما أماتنا وإليه النشور.",
+          info: "دعاء الاستيقاظ",
+          count: 1
+        },
+        {
+          text: "اللهم إني أسألك خير ما في هذا اليوم وخير ما بعده وأعوذ بك من شر ما فيه وشر ما بعده.",
+          info: "دعاء يوم جديد",
+          count: 1
+        }
+      ],
+      6: [ // أذكار المسجد
+        {
+          text: "اللهم افتح لي أبواب رحمتك.",
+          info: "دعاء دخول المسجد",
+          count: 1
+        },
+        {
+          text: "اللهم إني أسألك من فضلك.",
+          info: "دعاء الخروج من المسجد",
+          count: 1
+        }
+      ],
+      7: [ // أذكار الطعام
+        {
+          text: "اللهم بارك لنا فيما رزقتنا وقنا عذاب النار.",
+          info: "دعاء قبل الطعام",
+          count: 1
+        },
+        {
+          text: "الحمد لله الذي أطعمني هذا ورزقنيه من غير حول مني ولا قوة.",
+          info: "دعاء بعد الطعام",
+          count: 1
+        }
+      ],
+      8: [ // أذكار وتحوي
+        {
+          text: "لَا إِلَهَ إِلَّا اللَّهُ",
+          info: "أفضل الذكر لا إله إلاّ الله",
+          count: 100
+        },
+        {
+          text: "سُبْحَانَ اللَّهِ",
+          info: "يكتب له ألف حسنة أو يحط عنه ألف خطيئة",
+          count: 100
+        },
+        {
+          text: "سُبْحَانَ اللَّهِ وَبِحَمْدِهِ",
+          info: "حُطَّتْ خَطَايَاهُ وَإِنْ كَانَتْ مِثْلَ زَبَدِ الْبَحْرِ...",
+          count: 100
+        },
